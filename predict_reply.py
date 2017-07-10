@@ -2,12 +2,12 @@ import os
 import sys
 from weather import *
 
-greeting=(["hi","hello","hey"])
+greeting=(["hi"])
 def classify(msg):
     msg=msg.strip()
     msg=msg.lower()
     if(msg=="help"):
-       return "commonly used commands: \n1.Greeting: Hi/Hello/Hey \n\n2.google <word> (for google search).\n3.weather city_name "
+       return "commonly used commands: \n1.Greeting: Hi\n\n2.google <word> (for google search).\n3.weather city_name "
     if(msg in greeting):
        return "Hello! Whats up?"
     if(msg.find("google")==0):
