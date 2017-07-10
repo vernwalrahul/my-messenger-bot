@@ -25,7 +25,7 @@ def verify():
 def webhook():
 
     # endpoint for processing incoming messaging events
-
+  try:
     data = request.get_json()
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
 
@@ -38,11 +38,13 @@ def webhook():
 
                     sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
                     recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
-                    message_text = messaging_event["message"]["text"]  # the message's text
+                    try: 
+                        message_text = messaging_event["message"]["text"]  # the message's text
             
-                    reply=predict(message_text)
-                    send_message(sender_id, str(reply))
-
+                        reply=predict(message_text)
+                        send_message(sender_id, str(reply))
+                    except:
+                        send_message(sender_id,str("Sorry! I didn't get that."))    
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
 
@@ -53,6 +55,8 @@ def webhook():
                     pass
 
     return "ok", 200
+  except:
+    pass  
 
 
 def send_message(recipient_id, message_text):
