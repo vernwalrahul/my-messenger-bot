@@ -2,7 +2,7 @@ import os
 import sys
 from weather import *
 
-greeting=(["hi"])
+greeting=(["hi","hey","hello"])
 def classify(msg):
     msg=msg.strip()
     
