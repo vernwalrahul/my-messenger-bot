@@ -4,7 +4,7 @@ from weather import *
 
 greeting=(["hi","hey","hello"])
 def classify(msg):
-    msg=msg.strip()
+    msg=msg.lower().strip()
     
     if(msg=="help"):
        return "commonly used commands: \n1.Greeting: Hi\n\n2.google <word> (for google search).\n3.weather city_name "
