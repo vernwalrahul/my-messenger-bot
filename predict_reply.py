@@ -1,6 +1,7 @@
 import os
 import sys
 from weather import *
+from google import *
 
 greeting=(["hi","hey","hello"])
 def classify(msg):
@@ -11,7 +12,11 @@ def classify(msg):
     if(msg in greeting):
        return "Hello! Whats up?"
     if(msg.find("google")==0):
-       return "Feature for google search will be added soon."	
+       #try:
+        query=msg.split()[1]
+        return search(query,num=10)
+       #except:
+        #return "invalid search query"
     if(msg.find("weather")==0):
     	try:
     		city=msg.split()[1]
